@@ -16,7 +16,8 @@ public class JwtUtil {
         map.put("username", username);
         String jwt = Jwts.builder()
                 .setClaims(map)
-                .setExpiration(new Date(System.currentTimeMillis() + 3600_000_000L))// 1000 hour
+                //.setExpiration(new Date(System.currentTimeMillis() + 3600_000_000L))// 1000 hour
+                .setExpiration(new Date(System.currentTimeMillis() + 600_000L))// 10 mins
                 .signWith(SignatureAlgorithm.HS512, SECRET)
                 .compact();
         return "Bearer "+jwt; //jwt前面一般都会加Bearer
